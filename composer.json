@@ -1,5 +1,5 @@
 {
-    "name": "vortex/elasticsuite",
+    "name": "smile/elasticsuite",
     "type": "magento2-component",
     "license": "OSL-3.0",
     "authors": [{
@@ -7,7 +7,7 @@
             "email": "aurelien.foucret@smile.fr"
         }
     ],
-    "description": "Vortex ElasticSuite (Based Off Of Smile) - Magento2 Merchandising built on ElasticSearch",
+    "description": "Smile ElasticSuite - Magento2 Merchandising built on ElasticSearch",
     "homepage": "https://github.com/Smile-SA/elasticsuite",
     "keywords": [
         "magento",
