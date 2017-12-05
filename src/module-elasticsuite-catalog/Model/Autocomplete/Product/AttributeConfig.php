@@ -72,10 +72,11 @@ class AttributeConfig
         $this->storeManager       = $storeManager;
         $this->autocompleteHelper = $autocompleteHelper;
 
-        $this->selectedAttributes = array_merge($this->defaultSelectedAttributes, $additionalSelectedAttributes);
 
         $this->autocompleteAttributeCollection = $attributeCollectionFactory->create();
         $this->prepareAutocompleteAttributeCollection();
+        $this->selectedAttributes = array_merge($this->defaultSelectedAttributes, $additionalSelectedAttributes, $this->autocompleteAttributeCollection->getColumnValues('attribute_code'));
+
     }
 
     /**

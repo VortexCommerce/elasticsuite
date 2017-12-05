@@ -26,7 +26,7 @@ use Smile\ElasticsuiteCore\Search\Request\BucketInterface;
  */
 class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price implements FilterInterface
 {
-    use DecimalFilterTrait;
+    use PriceFilterTrait;
 
     /**
      * @var \Magento\Catalog\Model\Layer\Filter\DataProvider\Price

@@ -14,6 +14,10 @@
 
 namespace Smile\ElasticsuiteCatalog\Model\ResourceModel\Product\Indexer\Fulltext\Action;
 
+use Magento\Framework\App\ResourceConnection;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\EntityManager\MetadataPool;
+
 use Smile\ElasticsuiteCatalog\Model\ResourceModel\Eav\Indexer\Indexer;
 
 /**
@@ -25,6 +29,26 @@ use Smile\ElasticsuiteCatalog\Model\ResourceModel\Eav\Indexer\Indexer;
  */
 class Full extends Indexer
 {
+    protected $eavConfig;
+
+    /**
+     * Indexer constructor.
+     *
+     * @param \Magento\Framework\App\ResourceConnection     $resource     Resource Connection
+     * @param \Magento\Store\Model\StoreManagerInterface    $storeManager Store Manager
+     * @param \Magento\Framework\EntityManager\MetadataPool $metadataPool Metadata Pool
+     */
+    public function __construct(
+        ResourceConnection $resource,
+        StoreManagerInterface $storeManager,
+        MetadataPool $metadataPool,
+        \Magento\Eav\Model\Config $eavConfig
+    )
+    {
+        parent::__construct($resource, $storeManager, $metadataPool);
+        $this->eavConfig    = $eavConfig;
+    }
+
     /**
      * Load a bulk of product data.
      *

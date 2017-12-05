@@ -57,9 +57,31 @@ class AttributeData extends AbstractAttributeData implements DatasourceInterface
                     }
                 }
             }
+
+            $this->addChildSku($relationsByChildId, $indexData, $childrenIndexData);
         }
 
         return $indexData;
+    }
+
+    private function addChildSku($relationsByChildId, &$parentData, $childrenIndexData)
+    {
+        $skus = $this->resourceModel->getSkuData(array_keys($relationsByChildId));
+
+        foreach ($relationsByChildId as $childId => $relations) {
+            if (isset($skus[$childId])) {
+                foreach ($relations as $relation) {
+                    $parentId = (int)$relation['parent_id'];
+                    if (isset($parentData[$parentId]) && isset($childrenIndexData[$childId])) {
+                        if (!is_array($parentData[$parentId]['sku'])) {
+                            $sku = $parentData[$parentId]['sku'];
+                            $parentData[$parentId]['sku'] = [$sku];
+                        }
+                        $parentData[$parentId]['sku'][] = $skus[$childId];
+                    }
+                }
+            }
+        }
     }
 
     /**

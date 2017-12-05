@@ -138,6 +138,19 @@ class AbstractAttributeData extends Indexer
     }
 
     /**
+     * @param array $entityIds
+     * @return array
+     */
+    public function getSkuData(array $entityIds)
+    {
+        $entityIdField = $this->getEntityMetaData($this->getEntityTypeId())->getIdentifierField();
+        $select = $this->connection->select();
+        $select->from(['entity' => $this->getEntityMetaData($this->getEntityTypeId())->getEntityTable()], ['entity_id','sku'])
+            ->where("entity.{$entityIdField} IN (?)", $entityIds);
+        return $this->connection->fetchPairs($select);
+    }
+
+    /**
      * Get Entity Type Id.
      *
      * @return string

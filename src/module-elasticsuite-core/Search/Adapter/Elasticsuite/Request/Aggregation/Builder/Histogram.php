@@ -34,7 +34,7 @@ class Histogram
      */
     public function buildBucket(BucketInterface $bucket)
     {
-        $aggParams = ['field' => $bucket->getField(), 'interval' => $bucket->getInterval(), 'min_doc_count' => $bucket->getMinDocCount()];
+        $aggParams = ['field' => $bucket->getField(), 'interval' => $bucket->getInterval(), 'min_doc_count' => 1];
 
         return ['histogram' => $aggParams];
     }
