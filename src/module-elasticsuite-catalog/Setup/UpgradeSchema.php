@@ -43,9 +43,9 @@ class UpgradeSchema implements UpgradeSchemaInterface
             $this->appendDecimalDisplayConfiguration($setup);
         }
 
-        if (version_compare($context->getVersion(), '1.3.0', '<')) {
+//        if (version_compare($context->getVersion(), '1.3.0', '<')) {
             $this->appendReferenceFieldConfiguration($setup);
-        }
+//        }
 
         $setup->endSetup();
     }
